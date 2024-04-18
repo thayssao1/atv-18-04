@@ -1,0 +1,49 @@
+class Veiculo:
+    def _init_(self):
+        self.marca = "Ford"
+        self.modelo = "Fiesta"
+        self.velocidade = 0
+
+    def acelerar(self, velocidade):
+        self.velocidade += velocidade
+        print(f"A velocidade atual é de {self.velocidade} km/h")
+
+    def freiar(self, velocidade):
+        if self.velocidade - velocidade < 0:
+            self.velocidade = 0
+        else:
+            self.velocidade -= velocidade
+        print(f"A velocidade atual é de {self.velocidade} km/h")
+
+
+class Carro(Veiculo):
+    def _init_(self):
+        super()._init_()
+        self.portas_abertas = 0
+
+    def abrir_porta(self, num_portas=1):
+        self.portas_abertas += num_portas
+        print(f"{num_portas} porta(s) aberta(s). Atualmente, {self.portas_abertas} porta(s) estão abertas.")
+
+    def fechar_porta(self, num_portas=1):
+        self.portas_abertas -= num_portas
+        print(f"{num_portas} porta(s) fechada(s). Atualmente, {self.portas_abertas} porta(s) estão abertas.")
+
+
+class Moto(Veiculo):
+    def empinar(self, angulo):
+        print(f"A moto empinou em {angulo} graus.")
+
+
+carro = Carro()
+print(f"Marca: {carro.marca}, Modelo: {carro.modelo}")
+
+carro.acelerar(50)
+carro.acelerar(20)
+carro.freiar(30)
+carro.abrir_porta(2)
+carro.fechar_porta(2)
+
+moto = Moto()
+moto.empinar(45)
+moto.acelerar(30)
